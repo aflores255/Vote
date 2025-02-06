@@ -24,7 +24,7 @@ contract Vote {
         totalVoters = _whitelistedAddresses.length;
         for (uint i = 0; i < _whitelistedAddresses.length; i++) {
             whitelist[_whitelistedAddresses[i]] = true;
-        
+            emit Whitelisted(_whitelistedAddresses[i]);
         }
     }
 
@@ -36,7 +36,7 @@ contract Vote {
     }   
 
     modifier onlyWhitelisted() {
-        if(whitelist[msg.sender]) revert("Not included in whitelist");
+        if(!whitelist[msg.sender]) revert("Not included in whitelist");
         _;
     }
 
@@ -45,9 +45,42 @@ contract Vote {
         _;
     }
 
+    modifier votingEnded() {
+        if(votesCount < totalVoters) revert("Voting has not ended yet");
+        _;
+    }
+
     // Events
 
-    // External Functions
+    event Voted(address indexed voter, Candidates candidate);
+    event Whitelisted(address indexed user);
 
+    // External Functions
+    function vote(Candidates _candidate) external onlyWhitelisted notVoted {
+            votes[uint8(_candidate)]++;
+            hasVoted[msg.sender] = true;
+            votesCount = votesCount + 1;
+            emit Voted(msg.sender, _candidate);
+        }
+    
+    function getCurrentVotes() external view onlyMod returns (uint256[4] memory) {
+       
+        return [votes[0], votes[1], votes[2], votes[3]];
+    }
+    
+    function hasVotingEnded() external view returns (bool) {
+       
+        if(votesCount == totalVoters){
+            return true;
+        }
+        else{
+            return false;
+        }
+       
+    }
+
+    function getFinalResults() external view votingEnded returns (uint256[4] memory) {
+        return [votes[0], votes[1], votes[2], votes[3]];
+    }
 
 }

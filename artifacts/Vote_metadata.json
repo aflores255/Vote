@@ -17,6 +17,64 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "voter",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum Vote.Candidates",
+						"name": "candidate",
+						"type": "uint8"
+					}
+				],
+				"name": "Voted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "Whitelisted",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "getCurrentVotes",
+				"outputs": [
+					{
+						"internalType": "uint256[4]",
+						"name": "",
+						"type": "uint256[4]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getFinalResults",
+				"outputs": [
+					{
+						"internalType": "uint256[4]",
+						"name": "",
+						"type": "uint256[4]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -25,6 +83,19 @@
 					}
 				],
 				"name": "hasVoted",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "hasVotingEnded",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -59,6 +130,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "enum Vote.Candidates",
+						"name": "_candidate",
+						"type": "uint8"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -141,11 +225,11 @@
 	},
 	"sources": {
 		"Vote.sol": {
-			"keccak256": "0xb9d55ca591999cfe2237239615fa5c571f69ab8bc15148408e345c9e71a77d25",
+			"keccak256": "0x1c0171b1d803014ed53d19ca60b1be4270738f06373ddf8990677b6077122f77",
 			"license": "LGPL-3.0-only",
 			"urls": [
-				"bzz-raw://3ff094a341aa3a09db14ed4992a5d891b9bf1f64691240d729cf1720a825c494",
-				"dweb:/ipfs/QmYFk9AUawRMuJqCWNxmArSm5FWRXdpCP2jedX2LJRyjYF"
+				"bzz-raw://60c0e44cefcff715b49ec183d40c5169d45bfa29945ddf6016784976520ab6ba",
+				"dweb:/ipfs/QmPTr2shTQgHZuVaxWEEFs3NMij7Ztw4iaz93xNYFvro6j"
 			]
 		}
 	},
