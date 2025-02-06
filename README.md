@@ -28,7 +28,7 @@ This contract was developed using **Solidity** and is compatible with **Ethereum
 | ----------------- | -------------------------------------------------------------------- |
 | `onlyMod`       | Restricts function access to the contract owner (moderator)            |
 | `onlyWhitelisted` | Ensures only whitelisted addresses can vote and haven't voted before |
-| `notVoted`     | Ensures the adress has not voted before                                 |
+| `notVoted`     | Ensures the address has not voted before                                 |
 | `votingEnded`     | Ensures voting has ended before final results can be accessed        |
 
 ---
@@ -83,7 +83,7 @@ This contract was developed using **Solidity** and is compatible with **Ethereum
 
 ## 📄 License
 
-This project is licensed under the **This project is licensed under the LGPL-3.0-only.**.
+This project is licensed under the **This project is licensed under the LGPL-3.0-only.**
 
 
 
